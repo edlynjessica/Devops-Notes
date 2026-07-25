@@ -178,6 +178,30 @@ edlyn
 
 ---
 
+# 🖥️ cat
+
+### Purpose
+
+Displays the contents of a file.
+
+### Syntax
+
+cat <filename>
+
+### Example
+
+cat readme
+
+### Output
+
+Displays the contents of the file on the terminal.
+
+### Common Uses
+
+- Read text files
+- View configuration files
+- Concatenate multiple files
+
 # 📌 Summary
 
 | Command | Purpose |
