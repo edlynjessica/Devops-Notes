@@ -1,4 +1,4 @@
-# 🚩 Bandit Level 0 — Connecting via SSH
+# 🚩 Bandit Level 00 — Connecting via SSH
 
 ## 🎯 Objective
 
@@ -8,9 +8,17 @@ This level introduces the basics of connecting to a remote Linux machine securel
 
 ---
 
-# 📖 What is SSH?
+# 📖 Concept
 
-**SSH (Secure Shell)** is a network protocol that allows you to **securely connect to and control another computer over a network.**
+This level teaches how to connect to a remote Linux machine using **SSH**.
+
+Instead of running Linux commands on your own computer, you connect to another computer over the Internet and execute commands there.
+
+---
+
+# 🔐 What is SSH?
+
+**SSH (Secure Shell)** is a network protocol that allows you to securely connect to and control another computer over a network.
 
 It provides an encrypted communication channel between your computer and the remote machine.
 
@@ -35,22 +43,22 @@ It provides an encrypted communication channel between your computer and the rem
 ssh bandit0@bandit.labs.overthewire.org -p 2220
 ```
 
-### Breakdown
+### Command Breakdown
 
 | Part | Meaning |
 | :--- | :--- |
-| `ssh` | Secure Shell command |
-| `bandit0` | Username |
-| `@` | Login as this user on the remote machine |
-| `bandit.labs.overthewire.org` | Remote server |
+| `ssh` | Starts an SSH connection |
+| `bandit0` | Username on the remote server |
+| `@` | Login as this user |
+| `bandit.labs.overthewire.org` | Remote server address |
 | `-p` | Specifies the port number |
 | `2220` | SSH port used by Bandit |
 
 ---
 
-# 🔐 First Connection
+# 🔐 First-Time Connection
 
-On the first connection, SSH may display:
+The first time you connect, SSH displays:
 
 ```text
 The authenticity of host ...
@@ -63,53 +71,60 @@ Type:
 yes
 ```
 
-This stores the server's fingerprint so future connections can verify you're talking to the same server.
-
----
-
-# ⚠️ Password Input
-
-When entering a password in a Linux terminal:
-
-- No characters are displayed.
-- No `*` or `•` appear.
-- This is normal and improves security.
+SSH stores the server's fingerprint so it can verify the server's identity during future connections.
 
 ---
 
 # 🧠 What Actually Happens?
 
 ```text
-Your Keyboard
-      │
-      ▼
-Your Terminal
-      │
-      │ 🔒 Encrypted SSH Connection
-      ▼
-Bandit Server
-      │
-      ▼
-Shell (Bash)
-      │
-      ▼
-Linux Kernel
-      │
-      ▼
-Hardware
+               YOUR COMPUTER
+
+        👤 User
+            │
+            ▼
+     🖥️ Terminal
+            │
+            │  🔒 SSH Connection
+            ▼
+
+           REMOTE SERVER
+
+      🐚 Shell (Bash)
+            │
+            ▼
+      📞 System Calls
+            │
+            ▼
+      🧠 Linux Kernel
+            │
+            ▼
+        💻 Hardware
 ```
 
-Your computer provides the **keyboard and terminal**, while the **remote server** executes the commands.
+Your **Terminal** remains on your computer.
+
+The **Shell**, **Kernel**, and **Hardware** belong to the remote Bandit server.
+
+All commands are executed on the remote machine.
 
 ---
 
-# 🔍 Verification Commands
+# 💻 Commands Used
+
+## 📂 whoami
+
+### Purpose
+
+Displays the username of the currently logged-in user.
+
+### Command
 
 ```bash
 whoami
 ```
 
-Expected output:
+### Output
 
 ```text
 bandit0
@@ -117,11 +132,19 @@ bandit0
 
 ---
 
+## 📂 pwd
+
+### Purpose
+
+Displays the absolute path of the current working directory.
+
+### Command
+
 ```bash
 pwd
 ```
 
-Expected output:
+### Output
 
 ```text
 /home/bandit0
@@ -129,11 +152,19 @@ Expected output:
 
 ---
 
+## 📂 ls
+
+### Purpose
+
+Lists the files and directories in the current directory.
+
+### Command
+
 ```bash
 ls
 ```
 
-Expected output:
+### Output
 
 ```text
 readme
@@ -141,54 +172,53 @@ readme
 
 ---
 
-# 📝 Observations
+## 📂 cat
 
-- `whoami` displays the current logged-in user.
-- `pwd` shows the current working directory on the **remote server**.
-- `ls` lists the files in the current directory.
-- The file `readme` contains the password for the next level.
+### Purpose
 
----
+Displays the contents of a file.
 
-# 💡 Key Concepts Learned
+### Command
 
-- SSH provides a **secure, encrypted** connection to a remote computer.
-- After connecting, commands execute on the **remote Linux server**, not on your local machine.
-- The Terminal accepts input and displays output.
-- The Shell interprets commands.
-- The Kernel performs the requested operations.
-
----
-
-# 🧠 Architecture
-
-```text
-User
-   │
-   ▼
-Terminal
-   │
-   │ 🔒 SSH
-   ▼
-Remote Shell (Bash)
-   │
-   ▼
-System Calls
-   │
-   ▼
-Linux Kernel
-   │
-   ▼
-Hardware
+```bash
+cat readme
 ```
 
+### Output
+
+Displays the password for the next Bandit level.
+
 ---
 
-# ✅ Level Status
+# 💡 What I Learned
+
+- SSH creates a secure connection to a remote computer.
+- After logging in, commands execute on the **remote Linux server**, not on my local machine.
+- The Terminal accepts input and displays output.
+- The Shell interprets commands.
+- The Kernel communicates with the hardware.
+- `cat` displays the contents of a file.
+
+---
+
+# 📝 Key Observations
+
+- `whoami` returned `bandit0`, confirming the logged-in user.
+- `pwd` showed `/home/bandit0`, which is the home directory on the **remote server**.
+- `ls` listed the files in the current directory.
+- The file `readme` contained the password for the next level.
+- The password should be stored **locally**, not committed to GitHub.
+
+---
+
+# ✅ Level Checklist
 
 - [x] Connected to the Bandit server using SSH.
-- [x] Verified the current user.
-- [x] Verified the working directory.
-- [x] Listed the files in the home directory.
+- [x] Understood the purpose of SSH.
+- [x] Verified the current user using `whoami`.
+- [x] Verified the current directory using `pwd`.
+- [x] Listed files using `ls`.
+- [x] Read the `readme` file using `cat`.
+- [x] Obtained the password for Bandit Level 01.
 
-➡️ **Next:** Read the `readme` file to obtain the password for **Bandit Level 1**.
+➡️ **Next Level:** Log in as `bandit1` and solve **Bandit Level 01 → Level 02**.
