@@ -264,32 +264,62 @@ edlyn
 
 ### Purpose
 
-Displays the contents of a file.
+Displays the contents of text files and can combine multiple files.
 
 ### Syntax
 
+```bash
 cat <filename>
+```
 
 ### Example
 
-cat readme
+```bash
+cat readme.txt
+```
 
 ### Output
 
-Displays the contents of the file on the terminal.
+Displays the contents of `readme.txt` in the terminal.
 
 ### Common Uses
 
-- Read text files
+Read a text file:
+
+```bash
+cat notes.txt
+```
+
+Read multiple files:
+
+```bash
+cat file1.txt file2.txt
+```
+
+Display line numbers:
+
+```bash
+cat -n notes.txt
+```
+
+### When to Use
+
+- Read small text files
 - View configuration files
 - Concatenate multiple files
+- Quickly inspect file contents
+
+> **Tip:** For large files, use `less filename` for easier scrolling.
+
+---
 
 # 📌 Summary
 
 | Command | Purpose |
-| :--- | :--- |
+|--------|---------|
 | `pwd` | Display the current directory |
 | `ls` | List files and folders |
 | `cd` | Change the current directory |
 | `clear` | Clear the terminal screen |
 | `whoami` | Display the current username |
+| `cat` | Display or combine text file contents |
