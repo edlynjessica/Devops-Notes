@@ -39,6 +39,10 @@ An operating system is responsible for:
 
 Linux is a **free and open-source kernel** created by **Linus Torvalds** in **1991**.
 
+> 💡 **Key Point**
+>
+> A kernel is the core component of an operating system that manages the computer's hardware resources and provides services to programs.
+
 When combined with **GNU tools**, libraries, and other system software, it forms a complete operating system known as **GNU/Linux**.
 
 Linux is known for its:
