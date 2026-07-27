@@ -106,6 +106,139 @@ Without `--`, `ls` would assume `-file` is an option instead of a filename.
 
 ---
 
+# 🔎 find
+
+> Very important command
+
+### What is it?
+
+`find` is a Linux command used to **search for files and directories recursively** based on conditions like name, type, size, permissions, owner, and more.
+
+> 💡 Unlike `ls`, which lists one directory, `find` searches through the current directory and all its subdirectories.
+
+---
+
+## Syntax
+
+```bash
+find <starting-directory> [options]
+```
+
+Example:
+
+```bash
+find .
+```
+
+Searches everything under the current directory.
+
+---
+
+## Common Options
+
+### `-type`
+
+Filters by file type.
+
+| Option | Meaning |
+| :--- | :--- |
+| `f` | Regular files |
+| `d` | Directories |
+| `l` | Symbolic links |
+
+Examples
+
+```bash
+find . -type f
+find . -type d
+```
+
+---
+
+### `-name`
+
+Searches by filename.
+
+```bash
+find . -name "notes.txt"
+find . -name "*.txt"
+```
+
+---
+
+### `-iname`
+
+Case-insensitive filename search.
+
+```bash
+find . -iname "*.jpg"
+```
+
+---
+
+### `-size`
+
+Filters by file size.
+
+| Suffix | Meaning |
+| :--- | :--- |
+| `c` | Bytes |
+| `k` | KB |
+| `M` | MB |
+| `G` | GB |
+
+Examples
+
+```bash
+find . -size 1033c
+find . -size +1M
+find . -size -500k
+```
+
+---
+
+### `-empty`
+
+Finds empty files and directories.
+
+```bash
+find . -empty
+```
+
+---
+
+## Combine Conditions
+
+```bash
+find . -type f -size 1033c
+```
+
+Finds **files** that are exactly **1033 bytes**.
+
+---
+
+## `find` vs `ls`
+
+| `ls` | `find` |
+| :--- | :--- |
+| Lists one directory | Searches recursively |
+| Used for browsing | Used for searching |
+| Limited filtering | Powerful filtering |
+
+---
+
+## ⭐ Quick Revision
+
+| Command | Purpose |
+| :--- | :--- |
+| `find .` | Search everything |
+| `find . -type f` | Find files |
+| `find . -type d` | Find directories |
+| `find . -name "*.txt"` | Find text files |
+| `find . -iname "*.jpg"` | Case-insensitive search |
+| `find . -size 1033c` | Find files of 1033 bytes |
+| `find . -empty` | Find empty files/directories |
+
 # 📂 pwd
 
 ### What is it?
