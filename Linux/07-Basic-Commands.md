@@ -22,6 +22,88 @@ ls -l Downloads
 - **Option:** `-l`
 - **Argument:** `Downloads`
 
+# ✅ Options and Hyphens
+
+Most Linux commands support **options** (also called **flags**) that modify how the command behaves.
+
+Options are typically prefixed with a **hyphen (`-`)**.
+
+For example:
+
+```bash
+ls -l Downloads
+```
+
+Here:
+
+- `ls` → Command
+- `-l` → Option (long listing format)
+- `Downloads` → Argument
+
+The hyphen tells the command:
+
+> "Treat the following character(s) as an option, not as a filename or argument."
+
+## 🔹 Single Hyphen (`-`)
+
+A **single hyphen** is used for **single-letter options**.
+
+Examples:
+
+```bash
+ls -l
+ls -a
+ls -h
+```
+
+Multiple single-letter options can be combined:
+
+```bash
+ls -lah
+```
+
+This is equivalent to:
+
+```bash
+ls -l -a -h
+```
+
+## 🔹 Double Hyphen (`--`)
+
+A **double hyphen** is typically used for **long, descriptive option names**.
+
+Examples:
+
+```bash
+ls --all
+ls --human-readable
+```
+
+These are equivalent to:
+
+```bash
+ls -a
+ls -h
+```
+
+## 🔹 The Special `--`
+
+A standalone `--` tells the command:
+
+> "Stop interpreting anything after this as an option."
+
+This is useful when a filename begins with a hyphen.
+
+Example:
+
+```bash
+ls -- -file
+```
+
+Without `--`, `ls` would assume `-file` is an option instead of a filename.
+
+> **Note:** The `-` and `--` syntax is a long-standing Unix convention followed by most Linux commands, making command-line usage consistent across different tools.
+
 ---
 
 # 📂 pwd
