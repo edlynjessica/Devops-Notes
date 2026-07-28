@@ -22,89 +22,63 @@ ls -l Downloads
 - **Option:** `-l`
 - **Argument:** `Downloads`
 
-# ✅ Options and Hyphens
-
-Most Linux commands support **options** (also called **flags**) that modify how the command behaves.
-
-Options are typically prefixed with a **hyphen (`-`)**.
-
-For example:
-
-```bash
-ls -l Downloads
-```
-
-Here:
-
-- `ls` → Command
-- `-l` → Option (long listing format)
-- `Downloads` → Argument
-
-The hyphen tells the command:
-
-> "Treat the following character(s) as an option, not as a filename or argument."
-
-## 🔹 Single Hyphen (`-`)
-
-A **single hyphen** is used for **single-letter options**.
-
-Examples:
-
-```bash
-ls -l
-ls -a
-ls -h
-```
-
-Multiple single-letter options can be combined:
-
-```bash
-ls -lah
-```
-
-This is equivalent to:
-
-```bash
-ls -l -a -h
-```
-
-## 🔹 Double Hyphen (`--`)
-
-A **double hyphen** is typically used for **long, descriptive option names**.
-
-Examples:
-
-```bash
-ls --all
-ls --human-readable
-```
-
-These are equivalent to:
-
-```bash
-ls -a
-ls -h
-```
-
-## 🔹 The Special `--`
-
-A standalone `--` tells the command:
-
-> "Stop interpreting anything after this as an option."
-
-This is useful when a filename begins with a hyphen.
-
-Example:
-
-```bash
-ls -- -file
-```
-
-Without `--`, `ls` would assume `-file` is an option instead of a filename.
-
-> **Note:** The `-` and `--` syntax is a long-standing Unix convention followed by most Linux commands, making command-line usage consistent across different tools.
-
 ---
+
+# 📄 file
+
+### What is it?
+
+`file` identifies the **actual type of a file** by examining its contents rather than its filename or extension.
+
+### Syntax
+
+```bash
+file <filename>
+```
+
+### Common Options
+
+| Option | Description |
+| :--- | :--- |
+| `-i` | Display the MIME type |
+| `-b` | Display only the file type (without the filename) |
+
+### Examples
+
+Identify a file:
+
+```bash
+file notes.txt
+```
+
+Identify all files in the current directory:
+
+```bash
+file *
+```
+
+Identify files whose names begin with `-`:
+
+```bash
+file -- *
+```
+
+### Example Output
+
+```text
+notes.txt: ASCII text
+image.png: PNG image data
+program: ELF executable
+archive.gz: gzip compressed data
+```
+
+### When to Use
+
+- Identify unknown files.
+- Check whether a file is text, binary, executable, or an image.
+- Inspect files without opening them.
+
+> 💡 **Bandit Level 04:** `file -- *` was used to identify the only human-readable (`ASCII text`) file.
 
 # 🔎 find
 
@@ -446,13 +420,99 @@ cat -n notes.txt
 
 ---
 
+# ✅ Options and Hyphens
+
+Most Linux commands support **options** (also called **flags**) that modify how the command behaves.
+
+Options are typically prefixed with a **hyphen (`-`)**.
+
+For example:
+
+```bash
+ls -l Downloads
+```
+
+Here:
+
+- `ls` → Command
+- `-l` → Option (long listing format)
+- `Downloads` → Argument
+
+The hyphen tells the command:
+
+> "Treat the following character(s) as an option, not as a filename or argument."
+
+## 🔹 Single Hyphen (`-`)
+
+A **single hyphen** is used for **single-letter options**.
+
+Examples:
+
+```bash
+ls -l
+ls -a
+ls -h
+```
+
+Multiple single-letter options can be combined:
+
+```bash
+ls -lah
+```
+
+This is equivalent to:
+
+```bash
+ls -l -a -h
+```
+
+## 🔹 Double Hyphen (`--`)
+
+A **double hyphen** is typically used for **long, descriptive option names**.
+
+Examples:
+
+```bash
+ls --all
+ls --human-readable
+```
+
+These are equivalent to:
+
+```bash
+ls -a
+ls -h
+```
+
+## 🔹 The Special `--`
+
+A standalone `--` tells the command:
+
+> "Stop interpreting anything after this as an option."
+
+This is useful when a filename begins with a hyphen.
+
+Example:
+
+```bash
+ls -- -file
+```
+
+Without `--`, `ls` would assume `-file` is an option instead of a filename.
+
+> **Note:** The `-` and `--` syntax is a long-standing Unix convention followed by most Linux commands, making command-line usage consistent across different tools.
+
+---
+
 # 📌 Summary
 
 | Command | Purpose |
-|--------|---------|
-| `pwd` | Display the current directory |
+| :--- | :--- |
+| `pwd` | Display the current working directory |
 | `ls` | List files and folders |
 | `cd` | Change the current directory |
 | `clear` | Clear the terminal screen |
 | `whoami` | Display the current username |
 | `cat` | Display or combine text file contents |
+| `file` | Identify the type of a file |
+| `find` | Search for files and directories recursively |
